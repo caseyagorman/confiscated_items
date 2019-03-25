@@ -12,7 +12,7 @@ class Entries extends Component {
         <br />
         <Table bordered>
           <thead>
-            <tr>
+            <tr style={{ fontSize: 20 }}>
               <th>Item</th>
               <th>Description</th>
               <th>Date</th>
@@ -20,33 +20,30 @@ class Entries extends Component {
               <th>Image</th>
             </tr>
           </thead>
-          <tbody>
-            {items.map(function(item) {
-              return (
-                <tr key={item.entryId}>
-                  <td>
-                    {" "}
-                    <DeleteEntry item={item.entryId} />
-                    {item.item}
-                  </td>
-                  <td>{item.description}</td>
-                  <td>{item.date}</td>
-                  <td>
-                    {item.latitude}, {item.longitude}
-                    <MapContainer lat={item.latitude} lng={item.longitude} />
-                  </td>
-                  <td>
-                    {item.image !== undefined && (
-                      <img
-                        style={{ height: 150 }}
-                        alt="display form"
-                        src={`data:image/jpeg;base64,${item.image}`}
-                      />
-                    )}
-                  </td>
-                </tr>
-              );
-            })}
+          <tbody style={{ fontSize: 16 }}>
+            {items.map(item => (
+              <tr key={item.entryId}>
+                <td>
+                  {" "}
+                  <DeleteEntry item={item.entryId} />
+                  {item.item}
+                </td>
+                <td>{item.description}</td>
+                <td>{item.date}</td>
+                <td style={{ width: 250 }}>
+                  <MapContainer lat={item.latitude} lng={item.longitude} />
+                </td>
+                <td>
+                  {item.image !== undefined && (
+                    <img
+                      style={{ height: 150 }}
+                      alt="display form"
+                      src={`data:image/jpeg;base64,${item.image}`}
+                    />
+                  )}
+                </td>
+              </tr>
+            ))}
           </tbody>
         </Table>
       </div>

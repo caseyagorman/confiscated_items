@@ -64,10 +64,8 @@ def get_entries():
 @app.route("/api/delete-entry", methods=['POST'])
 def delete_entry():
     entry_id = request.get_json()
-    print("entry_id", entry_id)
     entry = Entry.query.filter_by(
         entry_id=entry_id).first()
-    print("found entry", entry)
     db.session.delete(entry)
     db.session.commit()
     return jsonify({"response": "success"})
